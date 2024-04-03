@@ -122,3 +122,30 @@ class ChatStat:
             "sender").count().sort_values('thread_path', ascending=False)
         counts = counts[start:top]
         return counts.thread_path.to_dict()
+
+    def word_counts(self, chat=None, length=1, top=10):
+        """
+        counts the word usage based on the passed in DataFrame `chat` and returns words that are longer than `length`
+        """
+        chat = self.msg_df if chat is None else chat
+        # filter out multimedia
+        messages = chat['msg'][pd.isnull(chat.sticker) & pd.isnull(chat.photos) & pd.isnull(chat.videos)]
+        words = {'count': {}}
+        for msg in messages:
+            msg = str(msg).encode('latin1').decode('utf8')  # to get around encoding problems
+            for word in msg.split(" "):
+                word = word.lower()
+                word = word.rstrip('?:!.,;')
+                if word in words['count']:
+                    words['count'][word] += 1
+                else:
+                    words['count'][word] = 1
+
+        word_df = pd.DataFrame(words).sort_values("count", ascending=False)
+
+        def len_filtered_wdf(length):
+            mask = [len(word) >= length for word in word_df.index]
+            return word_df[mask][:top]
+
+        filtered_df = len_filtered_wdf(length)
+        return filtered_df["count"].to_dict()
