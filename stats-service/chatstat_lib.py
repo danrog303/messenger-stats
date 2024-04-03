@@ -44,14 +44,6 @@ class ChatStat:
         type_df = pd.DataFrame(type_dict)
         return type_df.type.to_dict()
 
-    def chat_types(self, chat=None):
-        """ 
-        Takes a filtered msg_df (based on sender or chat title) and breaks down the type of chat
-        """
-        messages = self.msg_df if chat is None else chat
-        grouped = messages.groupby("thread_path").count().join(self.chat_df).groupby("thread_type").sum()
-        return grouped.msg.to_dict()
-
     def generate_time_indexed_df(self, messages):
         """
         turns a message df to a time-indexed df with columns for
@@ -103,7 +95,9 @@ class ChatStat:
         """
         daily_df = time_indexed.resample("D").count().sort_values("msg", ascending=False)
         daily_df = daily_df[:top]
-        return daily_df.msg.to_dict()
+        return {
+            date.strftime("%d-%m-%Y"): mess_count for date, mess_count in daily_df.msg.to_dict().items()
+        }
 
     def weekday_graph(self, time_indexed):
         """

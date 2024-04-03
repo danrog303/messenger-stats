@@ -5,7 +5,7 @@ from datetime import datetime
 from pathlib import Path
 
 
-JSON_FILENAME = "message_"
+JSON_FILENAME = "message_*.json"
 
 
 def parse_from_json(path=None):
@@ -14,8 +14,11 @@ def parse_from_json(path=None):
     path = Path(path)
     if not os.path.isdir(path):
         raise NotADirectoryError(f"{path} is not a directory")
-    messages_dir = [path / mdir for mdir in os.listdir(path)]
-    all_files = [msg_dir / json_file for msg_dir in messages_dir for json_file in os.listdir(msg_dir) if json_file.startswith(JSON_FILENAME)]
+
+    all_files = [
+        file for file
+        in path.rglob(JSON_FILENAME)
+    ]
 
     chat_data = []
     threads = set()
