@@ -6,7 +6,11 @@ import chatstat_lib
 import chatstat_loader
 
 app = Flask(__name__)
-workdir = "C:\\Users\\Daniel Rogowski\\Desktop\\elo"
+workdir = os.getenv("MESSENGER_STATS_UPLOAD_DIR")
+
+if not workdir:
+    print("MESSENGER_STATS_UPLOAD_DIR is not defined")
+    exit(1)
 
 
 def get_stats(chatstat: chatstat_lib.ChatStat):
