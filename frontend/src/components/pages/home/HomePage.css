@@ -1,0 +1,62 @@
+.container{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+}
+
+.vertical-align{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -60%);
+    width: 100%;
+}
+
+.title-name{
+    font-size: xxx-large;
+    text-align: center;
+}
+
+.left-title{
+    text-align: center;
+    font-size: x-large;
+}
+
+.image-container {
+    text-align: center;
+}
+
+.instruction-icon{
+    filter: drop-shadow(2px 3px 2px #484850);
+    width: 70%;
+    display: inline-block;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.number-circle {
+    border-radius: 30%;
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+    margin-top: 15px;
+    margin-right: 10px;
+    background: none;
+    border: 2px solid #dcdcdc;
+    text-align: center;
+    font-size: x-large;
+}
+
+.inline-points {
+    display: inline-block;
+    font-size: larger;
+}
+
+.inline-points a,
+.inline-points a:visited,
+.inline-points a:active,
+.inline-points a:hover {
+    color: #dcdcdc;
+}

@@ -19,11 +19,9 @@ export default function CircularProgressWithLabel(
                     justifyContent: 'center',
                 }}
             >
-                <Typography
-                    variant="caption"
-                    component="div"
-                    color="text.secondary"
-                >{`${Math.round(props.value)}%`}</Typography>
+                <Typography variant="caption" component="div">
+                    <span>{`${Math.round(props.value)}%`}</span>
+                </Typography>
             </Box>
         </Box>
     );

@@ -25,7 +25,7 @@ export default function InputFileUpload(props: InputFileUploadProps) {
         <Button component="label" role={undefined} tabIndex={-1} variant="outlined" color="neutral" startDecorator={
                 <SvgIcon>
                     <svg xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
+                        fill="white"
                         viewBox="0 0 24 24"
                         strokeWidth={1.5}
                         stroke="currentColor">
@@ -34,7 +34,7 @@ export default function InputFileUpload(props: InputFileUploadProps) {
                     </svg>
                 </SvgIcon>
             }>
-            Upload a file
+            <span style={{"color": "white"}}>Upload a file</span>
             <VisuallyHiddenInput type="file" onChange={props.handleFileChange} accept={props.accept} />
         </Button>
     );
