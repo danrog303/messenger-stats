@@ -12,14 +12,7 @@ export default function HomePage () {
     const navigate = useNavigate();
     const [progressPercentage, setProgressPercentage] = useState(0);
 
-    const handleFile = (event: FormEvent) => {
-        event.preventDefault();
-        const target = event.target as HTMLInputElement;
-        if (target === null || target.files === null) {
-            throw new Error("Form not found");
-        }
-
-        const file = target.files[0];
+    const handleFile = (file: File) => {
         const formData = new FormData();
         formData.append("file", file);
         axios.post("http://localhost:8080/upload", formData, {

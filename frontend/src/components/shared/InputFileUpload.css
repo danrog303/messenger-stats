@@ -1,0 +1,11 @@
+.dragndrop * {
+    color: #dcdcdc !important;
+}
+
+.dragndrop {
+    border: 2px dashed #dcdcdc !important;
+}
+
+svg{
+    filter: brightness(0) invert(1);
+}
