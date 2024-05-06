@@ -9,7 +9,7 @@ body {
   background: #FF1E91;
   background: radial-gradient(at 200px 200px, #ff3ea1, #4247f8, #313131);
   background-repeat:no-repeat;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .poppins-regular {

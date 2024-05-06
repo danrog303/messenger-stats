@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { Box, Container, Grid } from "@mui/material";
 import ReactiveEvent from "../../../models/ReactiveEvent";
 import ChatStatsEntry from "../../../models/ChatStatEntry";
+import "./StatsPage.css";
 
 interface LogsEntry {
     timestamp: string;
@@ -97,7 +98,9 @@ export default function StatsPage() {
                     <h2>Stat graphs</h2>
                     <p>When server finishes processing the part of metrics, graph will be displayed here.</p>
 
-                    {stats.map(stat => getGraphForMetrics(stat))}
+                    <div className={"graphs-section"}>
+                        {stats.map(stat => getGraphForMetrics(stat))}
+                    </div>
                 </Grid>
             </Grid>
         </Container>
