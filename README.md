@@ -39,6 +39,11 @@ Go to the frontend website (http://localhost:3000 by default). Here you will see
    - Sends calculated statistics to backend by using SSE streams
    - Code is partially based on simonwongwong/Facebook-Messenger-Statistics repo
 
+## 🧪 How to run tests?
+  Inside tests/ directory, you can find automated e2e tests which helps to ensure that application is working correctly.
+  1. Download your Facebook data, put them in tests/ directory and rename to `fb-files.zip`  
+  2. Run `python3 -m pytest tests/`
+
 ## 🎓 Note
 The application was created as an project assignment during the sixth semester of studies at Bydgoszcz University of Science and Technology.
 
